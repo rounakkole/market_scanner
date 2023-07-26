@@ -1,11 +1,11 @@
-class analyzer_class:
-
+class analyzer_class7:
     company_name = ""
     period_value = "5y"
     interval_value = "1d"
-    code_string = ".ns"
-    i_diff = 0
+    code_string = ""
+    i_diff = 5 #0
     match_num = 5
+    data = None
 
 
     def __init__(self, _company_name):
@@ -13,6 +13,7 @@ class analyzer_class:
 
 
     def interface(self):
+        from yfinance import download as yf_download
         #from functions import show_additional
         from functions import country_code
         from functions import set_period
@@ -20,7 +21,7 @@ class analyzer_class:
 
         company_name = self.company_name.upper()
         if (company_name == "S" or company_name == "SETTINGS"):
-            self.company_name = input("company name: ")
+            self.company_name = input("entity name: ")
             self.code_string = country_code()
             print("1d, 5d")
             self.interval_value = str(input("interval: "))
@@ -33,19 +34,24 @@ class analyzer_class:
         elif (company_name == "M" or company_name == "MULTI"):
             company_list = {}
             company_list = multi()
+            self.data = yf_download(company_list, period=self.period_value, interval=self.interval_value, threads=4, group_by="ticker")
+
             for company_name_n in company_list:
                 self.company_name = company_name_n
                 self.analyzer()
+                
         elif (company_name == "T" or company_name == "TEST"):
-            self.company_name = input("company name: ")
+            self.company_name = input("entity name: ")
+            self.i_diff = 2
             self.interface()
 
         else:
+            company_name = self.company_name + self.code_string
+            self.data = yf_download(("MSFT",company_name,"SPY"), period=self.period_value, interval=self.interval_value, threads=4, group_by="ticker")
             self.analyzer()
 
     
-    def analyser(self):
-        from yfinance import download as yf_download
+    def analyzer(self):
         from functions import absDiffr
         from functions import absSlope
         from functions import console_chart_v2
@@ -60,10 +66,8 @@ class analyzer_class:
             self.match_num = 3
         i2 = i_match = self.match_num
 
-        data = yf_download(tickers=company_name,
-                           period=self.period_value,
-                           interval=self.interval_value)
-
+        data = self.data[self.company_name]
+        
         test_errors = {}
         test_errors[2] = test_errors[3] = test_errors[4] = test_errors[5] = 100
 
@@ -261,8 +265,8 @@ class analyzer_class:
 
                 except Exception as e:
                 #else:
-                    print(company_name, i, end="   ")
-                    print(e)
+                    #print(company_name, i, end="   ")
+                    #print(e)
                     itr_fail = itr_fail + 1
 
             if (test_done == False):

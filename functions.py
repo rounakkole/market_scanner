@@ -16,6 +16,7 @@ def absDiffr(a, b):
     return diff
 
 
+
 def absSlope(a, b):
     if (a > 0 and b > 0):
         diff = 0
@@ -28,6 +29,7 @@ def absSlope(a, b):
     else:
         diff = 0
     return diff
+
 
 
 def show_additional(company_name):
@@ -55,12 +57,15 @@ def show_additional(company_name):
         #msft.recommendations
 
 
+
 def country_code():
 
-    country_name = str(input("country: "))
+    country_name = str(input("stock exchange: "))
     country_name = country_name.upper()
     if (country_name == "CURRENCY"):
         code_string = "=X"
+    elif (country_name == "CRYPTO"):
+        code_string = "-USD"
     elif (country_name == "INDIA"):
         code_string = ".BO"
     elif (country_name == "IN"):
@@ -96,6 +101,7 @@ def country_code():
     return code_string
 
 
+
 def set_period(interval_value):
     # valid periods: 1d,5d,1mo,3mo,6mo,1y,2y,5y,10y,ytd,max
     if (interval_value == "1m" or interval_value == "2m"):
@@ -121,29 +127,33 @@ def set_period(interval_value):
     return period
 
 
+
 def multi():
-    #symbols = ['^NSEI', '^BSESN', '^GSPC', 'MSFT', 'IWO', 'VFINX', 'BTC-USD']
+
     fortune_100 = [
-        'ACC', 'ADANIENT', 'ADANIPORTS', 'AMBUJACEM', 'APOLLOHOSP',
-        'ASIANPAINT', 'AXISBANK', 'BAJAJ-AUTO', 'BAJFINANCE', 'BAJAJFINSV',
-        'BAJAJHLDNG', 'BANDHANBNK', 'BANKBARODA', 'BERGEPAINT', 'BPCL',
-        'BHARTIARTL', 'BIOCON', 'BOSCHLTD', 'BRITANNIA', 'CHOLAFIN', 'CIPLA',
-        'COALINDIA', 'COLPAL', 'DABUR', 'DIVISLAB', 'DRREDDY', 'EICHERMOT',
-        'NYKAA', 'GAIL', 'GLAND', 'GODREJCP', 'GRASIM', 'HCLTECH', 'HDFCAMC',
-        'HDFCBANK', 'HDFCLIFE', 'HAVELLS', 'HEROMOTOCO', 'HINDALCO',
-        'HINDUNILVR', 'HDFC', 'ICICIBANK', 'ICICIGI', 'ICICIPRULI', 'ITC',
-        'IOC', 'INDUSTOWER', 'INDUSINDBK', 'NAUKRI', 'INFY', 'INDIGO',
-        'JSWSTEEL', 'JUBLFOOD', 'KOTAKBANK', 'LTI', 'LT', 'LUPIN', 'M&M',
-        'MARICO', 'MARUTI', 'MINDTREE', 'MUTHOOTFIN', 'NMDC', 'NTPC',
-        'NESTLEIND', 'ONGC', 'PAYTM', 'PIIND', 'PIDILITIND', 'PEL',
-        'POWERGRID', 'PGHH', 'PNB', 'RELIANCE', 'SBICARD', 'SBILIFE', 'SRF',
-        'SHREECEM', 'SIEMENS', 'SBIN', 'SAIL', 'SUNPHARMA', 'TCS',
-        'TATACONSUM', 'TATAMOTORS', 'TATASTEEL', 'TECHM', 'TITAN',
-        'TORNTPHARM', 'UPL', 'MCDOWELL-N', 'VEDL', 'WIPRO', 'ZOMATO',
-        'ZYDUSLIFE'
+        'ACC.NS', 'ADANIENT.NS', 'ADANIPORTS.NS', 'AMBUJACEM.NS', 'APOLLOHOSP.NS',
+        'ASIANPAINT.NS', 'AXISBANK.NS', 'BAJAJ-AUTO.NS', 'BAJFINANCE.NS', 'BAJAJFINSV.NS',
+        'BAJAJHLDNG.NS', 'BANDHANBNK.NS', 'BANKBARODA.NS', 'BERGEPAINT.NS', 'BPCL.NS',
+        'BHARTIARTL.NS', 'BIOCON.NS', 'BOSCHLTD.NS', 'BRITANNIA.NS', 'CHOLAFIN.NS', 'CIPLA.NS',
+        'COALINDIA.NS', 'COLPAL.NS', 'DABUR.NS', 'DIVISLAB.NS', 'DRREDDY.NS', 'EICHERMOT.NS',
+        'NYKAA.NS', 'GAIL.NS', 'GLAND.NS', 'GODREJCP.NS', 'GRASIM.NS', 'HCLTECH.NS', 'HDFCAMC.NS',
+        'HDFCBANK.NS', 'HDFCLIFE.NS', 'HAVELLS.NS', 'HEROMOTOCO.NS', 'HINDALCO.NS',
+        'HINDUNILVR.NS', 'HDFC.NS', 'ICICIBANK.NS', 'ICICIGI.NS', 'ICICIPRULI.NS', 'ITC.NS',
+        'IOC.NS', 'INDUSTOWER.NS', 'INDUSINDBK.NS', 'NAUKRI.NS', 'INFY.NS', 'INDIGO.NS',
+        'JSWSTEEL.NS', 'JUBLFOOD.NS', 'KOTAKBANK.NS', 'LTI.NS', 'LT.NS', 'LUPIN.NS', 'M&M.NS',
+        'MARICO.NS', 'MARUTI.NS', 'MINDTREE.NS', 'MUTHOOTFIN.NS', 'NMDC.NS', 'NTPC.NS',
+        'NESTLEIND.NS', 'ONGC.NS', 'PAYTM.NS', 'PIIND.NS', 'PIDILITIND.NS', 'PEL.NS',
+        'POWERGRID.NS', 'PGHH.NS', 'PNB.NS', 'RELIANCE.NS', 'SBICARD.NS', 'SBILIFE.NS', 'SRF.NS',
+        'SHREECEM.NS', 'SIEMENS.NS', 'SBIN.NS', 'SAIL.NS', 'SUNPHARMA.NS', 'TCS.NS',
+        'TATACONSUM.NS', 'TATAMOTORS.NS', 'TATASTEEL.NS', 'TECHM.NS', 'TITAN.NS',
+        'TORNTPHARM.NS', 'UPL.NS', 'MCDOWELL-N.NS', 'VEDL.NS', 'WIPRO.NS', 'ZOMATO.NS',
+        'ZYDUSLIFE.NS'
     ]
 
-    return fortune_100
+    entity_list = ['^NSEI','^BSESN','^GSPC','MSFT','IWO','VFINX','BTC-USD','ETH-USD','XRP-USD','DOGE-USD','LTC-USD','ITC.NS','CIPLA.NS','ONGC.NS']
+
+    return entity_list
+
 
 
 def console_chart(data_list):
