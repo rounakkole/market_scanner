@@ -1,4 +1,6 @@
 # market_scanner
+This repo is aset of sample strategies for educational purpose, not to be construed as recommendation.
+
 ```
 [*********************100%***********************]  1 of 1 completed
 
